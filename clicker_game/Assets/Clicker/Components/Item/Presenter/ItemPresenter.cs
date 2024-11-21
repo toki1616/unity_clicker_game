@@ -4,28 +4,31 @@ using UnityEngine;
 using R3;
 using ObservableCollections;
 
-public class ItemPresenter
+namespace My.ClickerGame
 {
-    private readonly ItemModel _itemModel;
-
-    public ItemPresenter
-        (
-        ItemModel itemModel
-        )
+    public class ItemPresenter
     {
-        Debug.Log("ItemPresenter : Inject");
-        _itemModel = itemModel;
-    }
+        private readonly ItemModel _itemModel;
+
+        public ItemPresenter
+            (
+            ItemModel itemModel
+            )
+        {
+            Debug.Log("ItemPresenter : Inject");
+            _itemModel = itemModel;
+        }
 
 
-    /// <summary>
-    /// UpgradeComponent
-    /// </summary>
-    public IObservableCollection<UpgradeComponent> upgradeComponents =>
-        _itemModel._upgradeComponents;
+        /// <summary>
+        /// UpgradeComponent
+        /// </summary>
+        public IObservableCollection<UpgradeComponent> upgradeComponents =>
+            _itemModel._upgradeComponents;
 
-    public void OnTapHome()
-    {
-        _itemModel.AddUpgradeComponent(UpgradeComponentEnum.Money);
+        public void OnTapHome()
+        {
+            _itemModel.AddUpgradeComponent(UpgradeComponentEnum.Money);
+        }
     }
 }

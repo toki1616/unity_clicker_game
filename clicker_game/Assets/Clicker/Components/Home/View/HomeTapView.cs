@@ -6,33 +6,36 @@ using R3;
 using R3.Triggers;
 using UnityEngine.EventSystems;
 
-public class HomeTapView : MonoBehaviour
+namespace My.ClickerGame
 {
-    private ItemPresenter _itemPresenter;
-
-    [Inject]
-    public void Construct
-        (
-            ItemPresenter itemPresenter
-        )
+    public class HomeTapView : MonoBehaviour
     {
-        _itemPresenter = itemPresenter;
-    }
+        private ItemPresenter _itemPresenter;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        var eventTrigger = this.gameObject.AddComponent<ObservableEventTrigger>();
-        // PointerDown
-        eventTrigger
-            .OnPointerDownAsObservable()
-            .Subscribe(pointerEventData => OnPointerDown(pointerEventData))
-            .AddTo(this);
-    }
+        [Inject]
+        public void Construct
+            (
+                ItemPresenter itemPresenter
+            )
+        {
+            _itemPresenter = itemPresenter;
+        }
 
-    private void OnPointerDown(PointerEventData pointerEventData)
-    {
-        //Debug.Log(pointerEventData.position);
-        _itemPresenter.OnTapHome();
+        // Start is called before the first frame update
+        void Start()
+        {
+            var eventTrigger = this.gameObject.AddComponent<ObservableEventTrigger>();
+            // PointerDown
+            eventTrigger
+                .OnPointerDownAsObservable()
+                .Subscribe(pointerEventData => OnPointerDown(pointerEventData))
+                .AddTo(this);
+        }
+
+        private void OnPointerDown(PointerEventData pointerEventData)
+        {
+            //Debug.Log(pointerEventData.position);
+            _itemPresenter.OnTapHome();
+        }
     }
 }

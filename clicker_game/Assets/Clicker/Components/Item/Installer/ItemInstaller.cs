@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class ItemInstaller : MonoInstaller
+namespace My.ClickerGame
 {
-    public override void InstallBindings()
+    public class ItemInstaller : MonoInstaller
     {
-        Debug.Log("ItemInstaller run");
+        public override void InstallBindings()
+        {
+            Debug.Log("ItemInstaller run");
 
-        //Presenter
-        Container.Bind<ItemPresenter>().AsSingle();
+            //Presenter
+            Container.Bind<ItemPresenter>().AsSingle();
 
 
-        //Model
-        Container.Bind<ItemModel>().AsSingle();
+            //Model
+            Container.Bind<ItemModel>().AsSingle();
+        }
     }
 }

@@ -6,27 +6,58 @@ using UnityEngine;
 using R3;
 using ObservableCollections;
 
-public class ItemModel
+namespace My.ClickerGame
 {
-    //UpgradeComponent
-    public ObservableList<UpgradeComponent> _upgradeComponents = new ObservableList<UpgradeComponent>();
-
-    public ItemModel()
+    public class ItemModel
     {
-        foreach (UpgradeComponentEnum value in Enum.GetValues(typeof(UpgradeComponentEnum)))
+        public ItemModel()
         {
-            _upgradeComponents.Add(new UpgradeComponent(value, 0));
+            InitializeUpgradeComponents();
+            InitializeUpgradeableItems();
         }
-    }
 
-    public void AddUpgradeComponent(UpgradeComponentEnum upgradeComponentType)
-    {
-        var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType); if (itemToUpdate != null)
+        //UpgradeComponent
+        public ObservableList<UpgradeComponent> _upgradeComponents = new ObservableList<UpgradeComponent>();
+
+        private void InitializeUpgradeComponents()
         {
-            itemToUpdate.AddCount(1);
-            var index = _upgradeComponents.IndexOf(itemToUpdate);
+            foreach (UpgradeComponentEnum value in Enum.GetValues(typeof(UpgradeComponentEnum)))
+            {
+                _upgradeComponents.Add(new UpgradeComponent(value, 0));
+            }
+        }
 
-            _upgradeComponents[index] = itemToUpdate;
+        public void AddUpgradeComponent(UpgradeComponentEnum upgradeComponentType)
+        {
+            var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType); if (itemToUpdate != null)
+            {
+                itemToUpdate.AddCount(1);
+                var index = _upgradeComponents.IndexOf(itemToUpdate);
+
+                _upgradeComponents[index] = itemToUpdate;
+            }
+        }
+
+        //UpgradeableItem
+        public ObservableList<UpgradeableItem> _upgradeableItems = new ObservableList<UpgradeableItem>();
+
+        private void InitializeUpgradeableItems()
+        {
+            foreach (UpgradeableItemEnum value in Enum.GetValues(typeof(UpgradeableItemEnum)))
+            {
+                _upgradeableItems.Add(new UpgradeableItem(value, 0));
+            }
+        }
+
+        public void AddUpgradeableItem(UpgradeableItemEnum upgradeableItemType)
+        {
+            var itemToUpgrade = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType); if (itemToUpgrade != null)
+            {
+                itemToUpgrade.LevelUp();
+                var index = _upgradeableItems.IndexOf(itemToUpgrade);
+
+                _upgradeableItems[index] = itemToUpgrade;
+            }
         }
     }
 }
