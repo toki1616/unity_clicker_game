@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace My.ClickerGame
 {
-    public enum UpgradeComponentEnum
+    public enum UpgradeComponentType
     {
         Money,
         Component,
@@ -13,10 +13,10 @@ namespace My.ClickerGame
 
     public class UpgradeComponent
     {
-        public UpgradeComponentEnum UpgradeComponentType { get; private set; }
+        public UpgradeComponentType UpgradeComponentType { get; private set; }
         public int Count { get; private set; }
 
-        public UpgradeComponent(UpgradeComponentEnum upgradeComponentType, int count)
+        public UpgradeComponent(UpgradeComponentType upgradeComponentType, int count)
         {
             this.UpgradeComponentType = upgradeComponentType;
             this.Count = count;

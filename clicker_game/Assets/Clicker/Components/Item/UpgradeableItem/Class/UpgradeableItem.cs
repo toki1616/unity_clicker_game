@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace My.ClickerGame
 {
-    public enum UpgradeableItemEnum
+    public enum UpgradeableItemType
     {
         Shot,
         FighterJetCount,
@@ -13,10 +13,10 @@ namespace My.ClickerGame
 
     public class UpgradeableItem
     {
-        public UpgradeableItemEnum UpgradeableItemType { get; private set; }
+        public UpgradeableItemType UpgradeableItemType { get; private set; }
         public int Level { get; private set; }
 
-        public UpgradeableItem(UpgradeableItemEnum upgradeableItemType, int level)
+        public UpgradeableItem(UpgradeableItemType upgradeableItemType, int level)
         {
             UpgradeableItemType = upgradeableItemType;
             Level = level;
