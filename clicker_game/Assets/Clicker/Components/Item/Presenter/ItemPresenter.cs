@@ -19,7 +19,6 @@ namespace My.ClickerGame
             _itemModel = itemModel;
         }
 
-
         /// <summary>
         /// UpgradeComponent
         /// </summary>
@@ -28,7 +27,21 @@ namespace My.ClickerGame
 
         public void OnTapHome()
         {
-            _itemModel.AddUpgradeComponent(UpgradeComponentEnum.Money);
+            _itemModel.AddUpgradeComponent(UpgradeComponentType.Money);
+        }
+
+        public UpgradeComponent GetUpgradeComponentValue(UpgradeComponentType upgradeComponentType)
+        {
+            return _itemModel.GetUpgradeComponent(upgradeComponentType);
+        }
+
+        //UpgradeableItem
+        public IObservableCollection<UpgradeableItem> upgradeableItems =>
+           _itemModel._upgradeableItems;
+
+        public UpgradeableItem GetUpgradeableItemValue(UpgradeableItemType upgradeableItemType)
+        {
+            return _itemModel.GetUpgradeableItemValue(upgradeableItemType);
         }
     }
 }

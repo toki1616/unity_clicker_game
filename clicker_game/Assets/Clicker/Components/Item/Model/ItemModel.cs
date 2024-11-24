@@ -12,6 +12,11 @@ namespace My.ClickerGame
     {
         public ItemModel()
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             InitializeUpgradeComponents();
             InitializeUpgradeableItems();
         }
@@ -21,13 +26,19 @@ namespace My.ClickerGame
 
         private void InitializeUpgradeComponents()
         {
-            foreach (UpgradeComponentEnum value in Enum.GetValues(typeof(UpgradeComponentEnum)))
+            foreach (UpgradeComponentType value in Enum.GetValues(typeof(UpgradeComponentType)))
             {
                 _upgradeComponents.Add(new UpgradeComponent(value, 0));
             }
         }
 
-        public void AddUpgradeComponent(UpgradeComponentEnum upgradeComponentType)
+        public UpgradeComponent GetUpgradeComponent(UpgradeComponentType upgradeComponentType)
+        {
+            var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType);
+            return itemToUpdate;
+        }
+
+        public void AddUpgradeComponent(UpgradeComponentType upgradeComponentType)
         {
             var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType); if (itemToUpdate != null)
             {
@@ -43,13 +54,19 @@ namespace My.ClickerGame
 
         private void InitializeUpgradeableItems()
         {
-            foreach (UpgradeableItemEnum value in Enum.GetValues(typeof(UpgradeableItemEnum)))
+            foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
             {
                 _upgradeableItems.Add(new UpgradeableItem(value, 0));
             }
         }
 
-        public void AddUpgradeableItem(UpgradeableItemEnum upgradeableItemType)
+        public UpgradeableItem GetUpgradeableItemValue(UpgradeableItemType upgradeableItemType)
+        {
+            var itemToUpgrade = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType);
+            return itemToUpgrade;
+        }
+
+        public void AddUpgradeableItem(UpgradeableItemType upgradeableItemType)
         {
             var itemToUpgrade = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType); if (itemToUpgrade != null)
             {
