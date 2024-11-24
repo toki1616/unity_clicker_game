@@ -27,34 +27,43 @@ namespace My.ClickerGame
         private TextMeshProUGUI text;
 
         [SerializeField]
-        private UpgradeComponentEnum upgradeComponentType = UpgradeComponentEnum.Money;
+        private UpgradeComponentType upgradeComponentType = UpgradeComponentType.Money;
 
         // Start is called before the first frame update
         void Start()
         {
             Initialize();
+        }
 
+        private void Initialize()
+        {
+            AddListener();
+            InitializeText();
+        }
+
+        private void AddListener()
+        {
             _itemPresenter.upgradeComponents.CollectionChanged += (in NotifyCollectionChangedEventArgs<UpgradeComponent> args) =>
             {
                 switch (args.Action)
                 {
                     case NotifyCollectionChangedAction.Add:
-                        Debug.Log($"Add:[{args.NewStartingIndex}] = {args.NewItem}");
+                        Debug.Log($"HeaderTextView : Add : [{args.NewStartingIndex}] = {args.NewItem}");
                         ChangeText(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Move:
                         Debug.Log(
-                            $"Move:[{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
+                            $"HeaderTextView : Move : [{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
                         break;
                     case NotifyCollectionChangedAction.Remove:
-                        Debug.Log($"Remove:[{args.OldStartingIndex}] = {args.OldItem}");
+                        Debug.Log($"HeaderTextView : Remove : [{args.OldStartingIndex}] = {args.OldItem}");
                         break;
                     case NotifyCollectionChangedAction.Replace:
-                        Debug.Log($"Replace:[{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
+                        Debug.Log($"HeaderTextView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
                         ChangeText(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Reset:
-                        Debug.Log("Reset");
+                        Debug.Log("HeaderTextView : Reset");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -62,9 +71,10 @@ namespace My.ClickerGame
             };
         }
 
-        private void Initialize()
+        private void InitializeText()
         {
-            text.text = $"money : 0";
+            var upgradeComponent = _itemPresenter.GetUpgradeComponentValue(upgradeComponentType);
+            ChangeText(upgradeComponent);
         }
 
         private void ChangeText(UpgradeComponent upgradeComponent)
