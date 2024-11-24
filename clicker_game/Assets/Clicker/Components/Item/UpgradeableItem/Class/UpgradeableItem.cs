@@ -13,33 +13,18 @@ namespace My.ClickerGame
 
     public class UpgradeableItem
     {
-        private UpgradeableItemEnum upgradeableItemType;
-        public UpgradeableItemEnum UpgradeableItemType
-        {
-            get
-            {
-                return upgradeableItemType;
-            }
-        }
-
-        private int level;
-        public int Level
-        {
-            get
-            {
-                return level;
-            }
-        }
+        public UpgradeableItemEnum UpgradeableItemType { get; private set; }
+        public int Level { get; private set; }
 
         public UpgradeableItem(UpgradeableItemEnum upgradeableItemType, int level)
         {
-            this.upgradeableItemType = upgradeableItemType;
-            this.level = level;
+            UpgradeableItemType = upgradeableItemType;
+            Level = level;
         }
 
         public void LevelUp()
         {
-            level++;
+            Level++;
         }
     }
 }

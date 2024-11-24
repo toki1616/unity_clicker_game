@@ -13,33 +13,18 @@ namespace My.ClickerGame
 
     public class UpgradeComponent
     {
-        private UpgradeComponentEnum upgradeComponentType;
-        public UpgradeComponentEnum UpgradeComponentType
-        {
-            get
-            {
-                return upgradeComponentType;
-            }
-        }
-
-        private int count;
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-        }
+        public UpgradeComponentEnum UpgradeComponentType { get; private set; }
+        public int Count { get; private set; }
 
         public UpgradeComponent(UpgradeComponentEnum upgradeComponentType, int count)
         {
-            this.upgradeComponentType = upgradeComponentType;
-            this.count = count;
+            this.UpgradeComponentType = upgradeComponentType;
+            this.Count = count;
         }
 
         public void AddCount(int addCount)
         {
-            count += addCount;
+            Count += addCount;
         }
     }
 }
