@@ -16,10 +16,22 @@ namespace My.ClickerGame
         public UpgradeableItemType UpgradeableItemType { get; private set; }
         public int Level { get; private set; }
 
-        public UpgradeableItem(UpgradeableItemType upgradeableItemType, int level)
+        public int NextLevel { get { return nextLevel * Level; } }
+        private int nextLevel;
+
+        public UpgradeableItem(UpgradeableItemType upgradeableItemType)
         {
             UpgradeableItemType = upgradeableItemType;
-            Level = level;
+        }
+
+        public void SetLevel(int value)
+        {
+            Level = value;
+        }
+
+        public void SetNextLevel(int value)
+        {
+            nextLevel = value;
         }
 
         public void LevelUp()

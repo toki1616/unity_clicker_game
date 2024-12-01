@@ -77,7 +77,7 @@ namespace My.ClickerGame
                         break;
                     case NotifyCollectionChangedAction.Replace:
                         Debug.Log($"HeaderTextView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
-                        ChangeLevelText(args.NewItem);
+                        ChangeUpgradeableItem(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Reset:
                         Debug.Log("HeaderTextView : Reset");
@@ -95,17 +95,28 @@ namespace My.ClickerGame
         private void SetUpgradeableLebel()
         {
             var upgradeComponent = _itemPresenter.GetUpgradeableItemValue(_upgradeableItemType);
-            ChangeLevelText(upgradeComponent);
+            ChangeUpgradeableItem(upgradeComponent);
         }
 
-        private void ChangeLevelText(UpgradeableItem upgradeableItem)
+        private void ChangeUpgradeableItem(UpgradeableItem upgradeableItem)
         {
             if (upgradeableItem.UpgradeableItemType != _upgradeableItemType)
             {
                 return;
             }
 
+            ChangeLevelText(upgradeableItem);
+            ChangeNextLevelText(upgradeableItem);
+        }
+
+        private void ChangeLevelText(UpgradeableItem upgradeableItem)
+        {
             _levelTMPro.text = $"Level : {upgradeableItem.Level}";
+        }
+
+        private void ChangeNextLevelText(UpgradeableItem upgradeableItem)
+        {
+            _nextLevelTMPro.text = $"NextLevel : {upgradeableItem.NextLevel}";
         }
 
         private void OnClickLevelUpButton()

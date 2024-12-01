@@ -56,7 +56,26 @@ namespace My.ClickerGame
         {
             foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
             {
-                _upgradeableItems.Add(new UpgradeableItem(value, 1));
+                var upgradeanleItem = new UpgradeableItem(value);
+                switch (value)
+                {
+                    case UpgradeableItemType.Shot:
+                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetNextLevel(10);
+                        break;
+
+                    case UpgradeableItemType.FighterJetCount:
+                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetNextLevel(100);
+                        break;
+
+                    case UpgradeableItemType.Support:
+                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetNextLevel(1000);
+                        break;
+                }
+
+                _upgradeableItems.Add(upgradeanleItem);
             }
         }
 
