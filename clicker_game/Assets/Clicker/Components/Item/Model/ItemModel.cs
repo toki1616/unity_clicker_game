@@ -56,7 +56,7 @@ namespace My.ClickerGame
         {
             foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
             {
-                _upgradeableItems.Add(new UpgradeableItem(value, 0));
+                _upgradeableItems.Add(new UpgradeableItem(value, 1));
             }
         }
 
@@ -66,7 +66,7 @@ namespace My.ClickerGame
             return itemToUpgrade;
         }
 
-        public void AddUpgradeableItem(UpgradeableItemType upgradeableItemType)
+        public void LevelUpUpgradeableItem(UpgradeableItemType upgradeableItemType)
         {
             var itemToUpgrade = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType); if (itemToUpgrade != null)
             {

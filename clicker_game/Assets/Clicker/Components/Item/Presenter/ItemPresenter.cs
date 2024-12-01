@@ -43,5 +43,10 @@ namespace My.ClickerGame
         {
             return _itemModel.GetUpgradeableItemValue(upgradeableItemType);
         }
+
+        public void LevelUpUpgradeableItem(UpgradeableItemType upgradeableItemType)
+        {
+            _itemModel.LevelUpUpgradeableItem(upgradeableItemType);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 using R3;
 using R3.Triggers;
@@ -26,7 +27,17 @@ namespace My.ClickerGame
         }
 
         [SerializeField]
-        private TextMeshProUGUI _LevelTMPro;
+        private TextMeshProUGUI _typeTMPro;
+
+        [SerializeField]
+        private TextMeshProUGUI _levelTMPro;
+
+        [SerializeField]
+        private TextMeshProUGUI _nextLevelTMPro;
+
+        [SerializeField]
+        private Button _levelUpButton;
+
 
         private UpgradeableItemType _upgradeableItemType = UpgradeableItemType.Shot;
 
@@ -39,6 +50,7 @@ namespace My.ClickerGame
         public void SetUpgradeableItemType(UpgradeableItemType upgradeableItemType)
         {
             _upgradeableItemType = upgradeableItemType;
+            _typeTMPro.text = $"{upgradeableItemType}";
         }
 
         private void Initialize()
@@ -74,6 +86,10 @@ namespace My.ClickerGame
                         throw new ArgumentOutOfRangeException();
                 }
             };
+
+            _levelUpButton
+                .OnClickAsObservable()
+                .Subscribe(_ => OnClickLevelUpButton());
         }
 
         private void SetUpgradeableLebel()
@@ -89,7 +105,12 @@ namespace My.ClickerGame
                 return;
             }
 
-            _LevelTMPro.text = $"{upgradeableItem.Level}";
+            _levelTMPro.text = $"Level : {upgradeableItem.Level}";
+        }
+
+        private void OnClickLevelUpButton()
+        {
+            _itemPresenter.LevelUpUpgradeableItem(_upgradeableItemType);
         }
     }
 }
