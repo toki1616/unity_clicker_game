@@ -14,6 +14,7 @@ namespace My.ClickerGame
     public class UpgradeableItem
     {
         public UpgradeableItemType UpgradeableItemType { get; private set; }
+        public UpgradeComponentType UpgradeComponentType { get; private set; }
         public int Level { get; private set; }
 
         public int NextLevel { get { return nextLevel * Level; } }
@@ -32,6 +33,11 @@ namespace My.ClickerGame
         public void SetNextLevel(int value)
         {
             nextLevel = value;
+        }
+
+        public void SetUpgradeComponentType(UpgradeComponentType upgradeComponentType)
+        {
+            UpgradeComponentType = upgradeComponentType;
         }
 
         public void LevelUp()

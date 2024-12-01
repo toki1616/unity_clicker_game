@@ -26,5 +26,10 @@ namespace My.ClickerGame
         {
             Count += addCount;
         }
+
+        public void MinusCount(int minusCount)
+        {
+            Count -= minusCount;
+        }
     }
 }

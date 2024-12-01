@@ -62,16 +62,19 @@ namespace My.ClickerGame
                     case UpgradeableItemType.Shot:
                         upgradeanleItem.SetLevel(1);
                         upgradeanleItem.SetNextLevel(10);
+                        upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
 
                     case UpgradeableItemType.FighterJetCount:
                         upgradeanleItem.SetLevel(1);
                         upgradeanleItem.SetNextLevel(100);
+                        upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
 
                     case UpgradeableItemType.Support:
                         upgradeanleItem.SetLevel(1);
                         upgradeanleItem.SetNextLevel(1000);
+                        upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
                 }
 
@@ -87,12 +90,18 @@ namespace My.ClickerGame
 
         public void LevelUpUpgradeableItem(UpgradeableItemType upgradeableItemType)
         {
-            var itemToUpgrade = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType); if (itemToUpgrade != null)
+            var upgradeableItem = _upgradeableItems.FirstOrDefault(item => item.UpgradeableItemType == upgradeableItemType); if (upgradeableItem != null)
             {
-                itemToUpgrade.LevelUp();
-                var index = _upgradeableItems.IndexOf(itemToUpgrade);
+                var upgradeComponent = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeableItem.UpgradeComponentType);
 
-                _upgradeableItems[index] = itemToUpgrade;
+                if (upgradeableItem.NextLevel <= upgradeComponent.Count)
+                {
+                    upgradeComponent.MinusCount(upgradeableItem.NextLevel);
+                    upgradeableItem.LevelUp();
+
+                    _upgradeComponents[_upgradeComponents.IndexOf(upgradeComponent)] = upgradeComponent;
+                    _upgradeableItems[_upgradeableItems.IndexOf(upgradeableItem)] = upgradeableItem;
+                }
             }
         }
     }
