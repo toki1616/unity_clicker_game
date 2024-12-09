@@ -5,6 +5,6 @@
         Home = ScreenType.Home,
         BattleSelect = ScreenType.BattleSelect,
         GachaSelect = ScreenType.GachaSelect,
-        Setting = ScreenType.Setting,
+        Other = ScreenType.Other,
     }
 }

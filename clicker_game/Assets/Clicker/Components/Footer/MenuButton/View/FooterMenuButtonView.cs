@@ -9,6 +9,7 @@ using R3;
 using R3.Triggers;
 using ObservableCollections;
 using TMPro;
+using My.ClickerGame.Ex;
 
 namespace My.ClickerGame
 {
@@ -43,7 +44,7 @@ namespace My.ClickerGame
         public void SetFooterMenuType(FooterMenuType footerMenuType)
         {
             _footerMenuType = footerMenuType;
-            _typeTMPro.text = $"{footerMenuType}";
+            _typeTMPro.text = $"{footerMenuType.GetFooterMenuName()}";
         }
 
         private void Initialize()
