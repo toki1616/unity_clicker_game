@@ -7,6 +7,13 @@
         Battle,
         GachaSelect,
         Gacha,
+        Other,
         Setting,
+    }
+
+    public enum ScreenSize
+    {
+        Full,
+        SafeArea,
     }
 }
