@@ -56,11 +56,6 @@ namespace My.ClickerGame
 
         private async void MoveScreen(ScreenType screenType)
         {
-            Debug.Log($"ScreenView : MoveScreen : {screenType}");
-
-            //GameObject view = await Addressables.LoadAssetAsync<GameObject>(screenType.GetAddressableNameFromScreenType());
-            //Instantiate(view, _fullScreenPanel.transform);
-
             await _addressableManager.LoadAssetAsync<GameObject>(screenType.GetAddressableNameFromScreenType(), obj =>
             {
                 // ロード成功時の処理
