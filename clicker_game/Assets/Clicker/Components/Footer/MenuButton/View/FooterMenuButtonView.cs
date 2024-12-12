@@ -61,7 +61,7 @@ namespace My.ClickerGame
 
         private void OnClickMove()
         {
-            _screenPresenter.MoveScreen(_footerMenuType);
+            _screenPresenter.MoveScreen((ScreenType)_footerMenuType);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using R3;
+using My.ClickerGame.Util;
 
 namespace My.ClickerGame
 {
@@ -18,9 +19,15 @@ namespace My.ClickerGame
             _screenModel = screenModel;
         }
 
-        public void MoveScreen(FooterMenuType footerMenuType)
+        //MoveScreen
+        public void MoveScreen(ScreenType screenType)
         {
-            _screenModel.MoveScreen(footerMenuType);
+            _screenModel.MoveScreen(screenType);
         }
+
+        public Observable<ScreenType> screenTypeAsObservable => 
+            _screenModel.ScreenTypeReactiveProperty
+            .Publish()
+            .RefCount();
     }
 }

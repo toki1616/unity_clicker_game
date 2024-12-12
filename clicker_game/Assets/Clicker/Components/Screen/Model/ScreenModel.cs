@@ -5,9 +5,12 @@ namespace My.ClickerGame
 {
     public class ScreenModel
     {
-        public void MoveScreen(FooterMenuType footerMenuType)
+        private ReactiveProperty<ScreenType> _screenTypeReactiveProperty = new ReactiveProperty<ScreenType>();
+        public ReadOnlyReactiveProperty<ScreenType> ScreenTypeReactiveProperty => _screenTypeReactiveProperty;
+
+        public void MoveScreen(ScreenType screenType)
         {
-            Debug.Log($"MoveScreen : {footerMenuType}");
+            _screenTypeReactiveProperty.Value = screenType;
         }
     }
 }
