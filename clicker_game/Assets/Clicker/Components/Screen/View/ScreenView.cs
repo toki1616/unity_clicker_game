@@ -33,6 +33,9 @@ namespace My.ClickerGame
         private GameObject _fullScreenPanel;
 
         [SerializeField]
+        private GameObject _safeAreaScreenPanel;
+
+        [SerializeField]
         private GameObject _safeAreaMainScreenPanel;
 
         void Start()
@@ -65,12 +68,16 @@ namespace My.ClickerGame
                 {
                     case ScreenSize.Full:
                         {
+                            ChangeParentViewSetActive(true);
+                            DeleteNowUI(_fullScreenPanel);
                             GameObject view = Instantiate(obj, _fullScreenPanel.transform);
                             break;
                         }
 
                     case ScreenSize.SafeArea:
                         {
+                            ChangeParentViewSetActive(false);
+                            DeleteNowUI(_safeAreaMainScreenPanel);
                             GameObject view = Instantiate(obj, _safeAreaMainScreenPanel.transform);
                             break;
                         }
@@ -81,6 +88,20 @@ namespace My.ClickerGame
                 // ロード失敗時の処理
                 Debug.LogError($"Error loading scene: {error.Message}");
             });
+        }
+
+        private void ChangeParentViewSetActive(bool isFullViewActive)
+        {
+            _fullScreenPanel.SetActive(isFullViewActive);
+            _safeAreaScreenPanel.SetActive(!isFullViewActive);
+        }
+
+        private void DeleteNowUI(GameObject parentObject)
+        {
+            foreach (Transform transform in parentObject.transform)
+            {
+                Destroy(transform.gameObject);
+            }
         }
     }
 }
