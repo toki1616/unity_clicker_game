@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {

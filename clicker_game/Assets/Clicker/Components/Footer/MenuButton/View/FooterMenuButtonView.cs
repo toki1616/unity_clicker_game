@@ -10,6 +10,7 @@ using R3.Triggers;
 using ObservableCollections;
 using TMPro;
 using My.ClickerGame.Ex;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {
@@ -61,7 +62,7 @@ namespace My.ClickerGame
 
         private void OnClickMove()
         {
-            _screenPresenter.MoveScreen((ScreenType)_footerMenuType);
+            _screenPresenter.MoveScreen((AddressableUIType)_footerMenuType);
         }
     }
 }

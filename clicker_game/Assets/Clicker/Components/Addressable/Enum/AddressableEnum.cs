@@ -10,6 +10,17 @@ namespace My.ClickerGame.MyEnum
         UIParts,
     }
 
+    public enum AddressableUIType
+    {
+        Home,
+        BattleSelect,
+        Battle,
+        GachaSelect,
+        Gacha,
+        Other,
+        Setting,
+    }
+
     public enum AddressableUIPartsEnum
     {
         BattleSelectButton,

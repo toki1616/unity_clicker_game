@@ -9,6 +9,7 @@ using R3;
 using Cysharp.Threading.Tasks;
 using My.ClickerGame.Util;
 using My.ClickerGame.Ex;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {
@@ -56,7 +57,7 @@ namespace My.ClickerGame
                 .AddTo(this);
         }
 
-        private async void MoveScreen(ScreenType screenType)
+        private async void MoveScreen(AddressableUIType screenType)
         {
             await _addressableManager.LoadAssetAsync<GameObject>(screenType.GetAddressableNameFromScreenType(), obj =>
             {
