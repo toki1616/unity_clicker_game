@@ -101,5 +101,12 @@ namespace My.ClickerGame
         {
             return enemyList.ToList();
         }
+
+        public Enemy SelectEnemy { get; private set; }
+        public void BattleSelect(int enemyID)
+        {
+            SelectEnemy = enemyList.FirstOrDefault(item => item.ID == enemyID);
+            Debug.Log(SelectEnemy);
+        }
     }
 }

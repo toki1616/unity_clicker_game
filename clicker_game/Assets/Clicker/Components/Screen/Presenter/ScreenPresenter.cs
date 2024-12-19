@@ -29,10 +29,5 @@ namespace My.ClickerGame
             _screenModel.AddressableUITypeReactiveProperty
             .Publish()
             .RefCount();
-
-        public void BattleSelect(int enemyID)
-        {
-
-        }
     }
 }

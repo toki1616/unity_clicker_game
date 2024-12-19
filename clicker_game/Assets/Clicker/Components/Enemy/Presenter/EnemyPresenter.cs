@@ -27,5 +27,10 @@ namespace My.ClickerGame
         {
             return _enemyModel.GetEnemyList();
         }
+
+        public void BattleSelect(int enemyID)
+        {
+            _enemyModel.BattleSelect(enemyID);
+        }
     }
 }

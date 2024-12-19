@@ -65,13 +65,13 @@ namespace My.ClickerGame.Ex
                     return ScreenSize.SafeArea;
 
                 case AddressableUIType.Battle:
-                    return ScreenSize.SafeArea;
+                    return ScreenSize.Full;
 
                 case AddressableUIType.GachaSelect:
                     return ScreenSize.SafeArea;
 
                 case AddressableUIType.Gacha:
-                    return ScreenSize.SafeArea;
+                    return ScreenSize.Full;
 
                 case AddressableUIType.Other:
                     return ScreenSize.SafeArea;

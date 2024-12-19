@@ -42,14 +42,17 @@ namespace My.ClickerGame
         private async void CreateBattleSelectButton()
         {
             List<Enemy> enemyList = _enemyPresenter.GetEnemyList();
-            Debug.Log(AddressableGroupEnum.UIParts.GetAddressableGroup());
-            Debug.Log(AddressableUIPartsEnum.BattleSelectButton.GetAddressableName());
 
             await _addressableManager.LoadAssetAsync<GameObject>(AddressableUIPartsEnum.BattleSelectButton.GetAddressableName(), obj =>
             {
                 // ロード成功時の処理
                 Debug.Log($"Scene {obj} loaded successfully.");
-                GameObject view = Instantiate(obj, _parentObject.transform);
+
+                foreach(var enemy in enemyList)
+                {
+                    GameObject view = Instantiate(obj, _parentObject.transform);
+                    view.GetComponent<BattleSelectButtonView>().SetEnemyID(enemy.ID);
+                }
             },
             error =>
             {

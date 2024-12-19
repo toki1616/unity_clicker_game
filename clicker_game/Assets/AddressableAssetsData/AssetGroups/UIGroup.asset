@@ -35,6 +35,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ui
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 905ffe5333c26584bbde4b8de78fb5b7
+    m_Address: BattleUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1d0f50d26a533ec4bae11056d0925499, type: 2}
   m_SchemaSet:
