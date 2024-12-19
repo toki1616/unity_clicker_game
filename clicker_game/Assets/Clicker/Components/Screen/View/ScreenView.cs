@@ -9,7 +9,6 @@ using R3;
 using Cysharp.Threading.Tasks;
 using My.ClickerGame.Util;
 using My.ClickerGame.Ex;
-using UnityEngine.AddressableAssets;
 
 namespace My.ClickerGame
 {
@@ -82,6 +81,8 @@ namespace My.ClickerGame
                             break;
                         }
                 }
+
+                _addressableManager.Dispose();
             },
             error =>
             {
