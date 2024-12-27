@@ -1186,7 +1186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7042271114616771309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1528,7 +1528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &62434037225410238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2415,7 +2415,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8319662247597848816}
   m_FillRect: {fileID: 3390393596234702948}
   m_HandleRect: {fileID: 7071674979871638313}
@@ -2505,7 +2505,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6904948394696108210}
   m_FillRect: {fileID: 4208941121924445027}
   m_HandleRect: {fileID: 6731086811972682736}

@@ -30,6 +30,8 @@ namespace My.ClickerGame
         [SerializeField]
         private Slider _hpSlider;
 
+        private int _maxHP = 0;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -49,8 +51,18 @@ namespace My.ClickerGame
 
         private void UpdateSelectEnemy(Enemy enemy)
         {
-            Debug.Log("UpdateSelectEnemy");
-            SetHPText(enemy.HitPoint);
+            SetHP(enemy.HitPoint);
+        }
+
+        private void SetHP(int hp)
+        {
+            if (_maxHP == 0)
+            {
+                _maxHP = hp;
+            }
+
+            SetHPText(hp);
+            SetHPGauge(hp);
         }
 
         private void SetHPText(int hp)
@@ -58,6 +70,13 @@ namespace My.ClickerGame
             if (!_hpTMPro) { return; }
 
             _hpTMPro.text = $"{hp}";
+        }
+
+        private void SetHPGauge(int hp)
+        {
+            float hpPer = (float)hp / (float)_maxHP;
+            Debug.Log($"hp : {hp} : maxHP : {_maxHP} : gauge : {hpPer}");
+            _hpSlider.value = hpPer;
         }
     }
 }

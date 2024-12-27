@@ -62,7 +62,7 @@ namespace My.ClickerGame
         {
             Debug.Log("OnTapBattleDamage");
             Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
-            enemy.HitPointMinus(1);
+            enemy.HitPointMinus(10);
             _selectEnemy.Value = enemy;
         }
     }
