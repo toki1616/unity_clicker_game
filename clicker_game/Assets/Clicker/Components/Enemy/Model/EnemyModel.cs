@@ -36,7 +36,7 @@ namespace My.ClickerGame
                             {
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 100, dropRate: 100),
                             };
-                            Enemy enemy = new Enemy(id: i, name: "test1", hitPoint: 100, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 0, name: "test1", hitPoint: 100, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -49,7 +49,7 @@ namespace My.ClickerGame
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 100, dropRate: 90),
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 10),
                             };
-                            Enemy enemy = new Enemy(id: i, name: "test2", hitPoint: 500, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 1, name: "test2", hitPoint: 500, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -62,7 +62,7 @@ namespace My.ClickerGame
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 90),
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 10000, dropRate: 10),
                             };
-                            Enemy enemy = new Enemy(id: i, name: "test3", hitPoint: 1000, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 2, name: "test3", hitPoint: 1000, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -75,7 +75,7 @@ namespace My.ClickerGame
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 10000, dropRate: 90),
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 100000, dropRate: 10),
                             };
-                            Enemy enemy = new Enemy(id: i, name: "test4", hitPoint: 5000, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 3, name: "test4", hitPoint: 5000, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -88,7 +88,7 @@ namespace My.ClickerGame
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 100000, dropRate: 90),
                                 new EnemyDropItem(dropItemType: UpgradeComponentType.Money, dropCount: 1000000, dropRate: 10),
                             };
-                            Enemy enemy = new Enemy(id: i, name: "test5", hitPoint: 10000, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 4, name: "test5", hitPoint: 10000, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -102,11 +102,22 @@ namespace My.ClickerGame
             return enemyList.ToList();
         }
 
-        public Enemy SelectEnemy { get; private set; }
-        public void BattleSelect(int enemyID)
+        public Enemy GetEnemyFromEnemyID(int enemyID)
         {
-            SelectEnemy = enemyList.FirstOrDefault(item => item.ID == enemyID);
-            Debug.Log(SelectEnemy);
+            if (enemyList == null)
+            {
+                Debug.LogError("enemyList is null");
+                return null;
+            }
+
+            var selectedEnemy = enemyList.FirstOrDefault(enemy => enemy.ID == enemyID);
+
+            if (selectedEnemy == null)
+            {
+                Debug.LogError($"No enemy found with ID: {enemyID}");
+            }
+
+            return selectedEnemy;
         }
     }
 }

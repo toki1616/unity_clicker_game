@@ -19,6 +19,12 @@ namespace My.ClickerGame
             HitPoint = hitPoint;
             DropItems = enemyDropItems;
         }
+
+        public void HitPointMinus(int attackValue)
+        {
+            HitPoint -= attackValue;
+            HitPoint = Mathf.Max(HitPoint, 0);
+        }
     }
     
     public class EnemyDropItem

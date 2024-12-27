@@ -11,18 +11,18 @@ namespace My.ClickerGame
     public class BattleSelectButtonView : MonoBehaviour
     {
         private ScreenPresenter _screenPresenter;
-        private EnemyPresenter _enemyPresenter;
+        private BattlePresenter _battlePresenter;
 
         [Inject]
         public void Construct
             (
                 ScreenPresenter screenPresenter,
-                EnemyPresenter enemyPresenter
+                BattlePresenter battlePresenter
             )
         {
             Debug.Log("BattleSelectButtonView : Inject");
             _screenPresenter = screenPresenter;
-            _enemyPresenter = enemyPresenter;
+            _battlePresenter = battlePresenter;
         }
 
         [SerializeField]
@@ -50,8 +50,7 @@ namespace My.ClickerGame
 
         private void OnClickButton()
         {
-            Debug.Log($"enemyID : {_enemyID}");
-            _enemyPresenter.BattleSelect(_enemyID);
+            _battlePresenter.BattleSelect(_enemyID);
             _screenPresenter.MoveScreen(AddressableUIType.Battle);
         }
 
