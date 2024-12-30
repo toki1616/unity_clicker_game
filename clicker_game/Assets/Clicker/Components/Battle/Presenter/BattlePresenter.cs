@@ -29,12 +29,17 @@ namespace My.ClickerGame
             .Publish()
             .RefCount();
 
+        public void StartGame()
+        {
+            _battleModel.StartGame();
+        }
+
         //Enemy
         public Observable<Enemy> SelectEnemyObservable =>
             _battleModel.SelectEnemy
-            .Do(_ => {
-                Debug.Log($"SelectEnemyObservable : EnemyID : {_.ID} : {_.HitPoint}");
-            })
+            //.Do(_ => {
+            //    Debug.Log($"SelectEnemyObservable : EnemyID : {_.ID} : {_.HitPoint}");
+            //})
             .Publish()
             .RefCount();
 

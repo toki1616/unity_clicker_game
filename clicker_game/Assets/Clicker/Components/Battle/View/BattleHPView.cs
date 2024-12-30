@@ -75,7 +75,6 @@ namespace My.ClickerGame
         private void SetHPGauge(int hp)
         {
             float hpPer = (float)hp / (float)_maxHP;
-            Debug.Log($"hp : {hp} : maxHP : {_maxHP} : gauge : {hpPer}");
             _hpSlider.value = hpPer;
         }
     }

@@ -30,6 +30,8 @@ namespace My.ClickerGame
         [SerializeField]
         private Slider _timeLimitSlider;
 
+        private float _maxTimeLimit = 0;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -49,6 +51,26 @@ namespace My.ClickerGame
         private void UpdateTimeLimit(float timeLimit)
         {
             Debug.Log("UpdateSelectEnemy");
+
+            if (_maxTimeLimit == 0)
+            {
+                _maxTimeLimit = timeLimit;
+            }
+
+            SetTimeLimitText(timeLimit);
+            SetTimeLimitGauge(timeLimit);
+        }
+
+        private void SetTimeLimitText(float timeLimit)
+        {
+            if (!_timeLimitTMPro) { return; }
+
+            _timeLimitTMPro.text = $"{timeLimit}";
+        }
+
+        private void SetTimeLimitGauge(float timeLimit)
+        {
+            _timeLimitSlider.value = timeLimit / _maxTimeLimit;
         }
     }
 }

@@ -9,18 +9,18 @@ namespace My.ClickerGame
 {
     public class BattleModel
     {
-        private const float timeLimit = 30;
+        private const float baseTimeLimit = 30;
 
         public ReadOnlyReactiveProperty<float> RemainingTime => _remainingTime;
-        private ReactiveProperty<float> _remainingTime = new ReactiveProperty<float>(timeLimit);
+        private ReactiveProperty<float> _remainingTime = new ReactiveProperty<float>(baseTimeLimit);
 
         public ReadOnlyReactiveProperty<bool> IsGamePlaying => _isGamePlaying;
         private ReactiveProperty<bool> _isGamePlaying = new ReactiveProperty<bool>(false);
 
-        private void StartGame()
+        public void StartGame()
         {
             _isGamePlaying.Value = true;
-            _remainingTime.Value = timeLimit;
+            _remainingTime.Value = baseTimeLimit;
 
             StartCountdown();
         }
@@ -60,6 +60,12 @@ namespace My.ClickerGame
 
         public void OnTapBattleDamage()
         {
+            if (!_isGamePlaying.Value)
+            {
+                StartGame();
+                return;
+            }
+
             Debug.Log("OnTapBattleDamage");
             Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
             enemy.HitPointMinus(10);
