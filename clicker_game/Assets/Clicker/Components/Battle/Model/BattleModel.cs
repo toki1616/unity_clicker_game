@@ -17,6 +17,9 @@ namespace My.ClickerGame
         public ReadOnlyReactiveProperty<bool> IsGamePlaying => _isGamePlaying;
         private ReactiveProperty<bool> _isGamePlaying = new ReactiveProperty<bool>(false);
 
+        public Observable<bool> IsGameEndSuccessObservable => _isGameEndSuccessSubject;
+        private Subject<bool> _isGameEndSuccessSubject = new Subject<bool>();
+
         public void StartGame()
         {
             _isGamePlaying.Value = true;
@@ -43,6 +46,26 @@ namespace My.ClickerGame
         private void EndGame()
         {
             _isGamePlaying.Value = false;
+
+            if (_selectEnemy.Value.HitPoint <= 0)
+            {
+                Success();
+                return;
+            }
+
+            Failure();
+        }
+
+        private void Success()
+        {
+            Debug.Log("Success");
+            _isGameEndSuccessSubject.OnNext(true);
+        }
+
+        private void Failure()
+        {
+            Debug.Log("Failure");
+            _isGameEndSuccessSubject.OnNext(false);
         }
 
         //Enemy
@@ -58,18 +81,24 @@ namespace My.ClickerGame
             _selectEnemy.Value = enemy;
         }
 
-        public void OnTapBattleDamage()
+        public void OnTapBattlePanel()
         {
+            Debug.Log("OnTapBattlePanel");
+
             if (!_isGamePlaying.Value)
             {
                 StartGame();
                 return;
             }
 
-            Debug.Log("OnTapBattleDamage");
             Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
             enemy.HitPointMinus(10);
             _selectEnemy.Value = enemy;
+
+            if (_selectEnemy.Value.HitPoint <= 0)
+            {
+                EndGame();
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace My.ClickerGame
         private void OnPointerDown(PointerEventData pointerEventData)
         {
             //Debug.Log(pointerEventData.position);
-            _battlePresenter.OnTapBattleDamage();
+            _battlePresenter.OnTapBattlePanel();
         }
     }
 }

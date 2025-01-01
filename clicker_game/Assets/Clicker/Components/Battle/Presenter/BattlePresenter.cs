@@ -29,6 +29,14 @@ namespace My.ClickerGame
             .Publish()
             .RefCount();
 
+        public Observable<bool> IsGameEndSuccessObservable =>
+            _battleModel.IsGameEndSuccessObservable
+            //.Do(_ => {
+            //    Debug.Log($"SelectEnemyObservable : EnemyID : {_.ID} : {_.HitPoint}");
+            //})
+            .Publish()
+            .RefCount();
+
         public void StartGame()
         {
             _battleModel.StartGame();
@@ -54,9 +62,9 @@ namespace My.ClickerGame
             _battleModel.BattleSelect(enemy);
         }
 
-        public void OnTapBattleDamage()
+        public void OnTapBattlePanel()
         {
-            _battleModel.OnTapBattleDamage();
+            _battleModel.OnTapBattlePanel();
         }
     }
 }

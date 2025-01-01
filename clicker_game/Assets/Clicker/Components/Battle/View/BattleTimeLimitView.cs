@@ -50,8 +50,6 @@ namespace My.ClickerGame
 
         private void UpdateTimeLimit(float timeLimit)
         {
-            Debug.Log("UpdateSelectEnemy");
-
             if (_maxTimeLimit == 0)
             {
                 _maxTimeLimit = timeLimit;
