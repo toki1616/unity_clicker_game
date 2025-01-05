@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame.Ex
 {

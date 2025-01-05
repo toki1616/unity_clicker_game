@@ -1,10 +1,10 @@
-﻿namespace My.ClickerGame
+﻿namespace My.ClickerGame.MyEnum
 {
     public enum FooterMenuType
     {
-        Home = ScreenType.Home,
-        BattleSelect = ScreenType.BattleSelect,
-        GachaSelect = ScreenType.GachaSelect,
-        Other = ScreenType.Other,
+        Home = AddressableUIType.Home,
+        BattleSelect = AddressableUIType.BattleSelect,
+        GachaSelect = AddressableUIType.GachaSelect,
+        Other = AddressableUIType.Other,
     }
 }

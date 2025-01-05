@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using R3;
-using My.ClickerGame.Util;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {
@@ -20,13 +20,13 @@ namespace My.ClickerGame
         }
 
         //MoveScreen
-        public void MoveScreen(ScreenType screenType)
+        public void MoveScreen(AddressableUIType addressableUIType)
         {
-            _screenModel.MoveScreen(screenType);
+            _screenModel.MoveScreen(addressableUIType);
         }
 
-        public Observable<ScreenType> screenTypeAsObservable => 
-            _screenModel.ScreenTypeReactiveProperty
+        public Observable<AddressableUIType> screenTypeAsObservable => 
+            _screenModel.AddressableUITypeReactiveProperty
             .Publish()
             .RefCount();
     }

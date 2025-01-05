@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using R3;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {
     public class ScreenModel
     {
-        private ReactiveProperty<ScreenType> _screenTypeReactiveProperty = new ReactiveProperty<ScreenType>();
-        public ReadOnlyReactiveProperty<ScreenType> ScreenTypeReactiveProperty => _screenTypeReactiveProperty;
+        private ReactiveProperty<AddressableUIType> _addressableUITypeReactiveProperty = new ReactiveProperty<AddressableUIType>(AddressableUIType.Home);
+        public ReadOnlyReactiveProperty<AddressableUIType> AddressableUITypeReactiveProperty => _addressableUITypeReactiveProperty;
 
-        public void MoveScreen(ScreenType screenType)
+        public void MoveScreen(AddressableUIType addressableUIType)
         {
-            _screenTypeReactiveProperty.Value = screenType;
+            _addressableUITypeReactiveProperty.Value = addressableUIType;
         }
     }
 }

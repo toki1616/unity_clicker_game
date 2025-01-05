@@ -1,16 +1,5 @@
-﻿namespace My.ClickerGame
+﻿namespace My.ClickerGame.MyEnum
 {
-    public enum ScreenType
-    {
-        Home,
-        BattleSelect,
-        Battle,
-        GachaSelect,
-        Gacha,
-        Other,
-        Setting,
-    }
-
     public enum ScreenSize
     {
         Full,
