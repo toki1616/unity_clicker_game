@@ -12,11 +12,20 @@ namespace My.ClickerGame.MyEnum
 
     public enum AddressableUIType
     {
+        //Home
         Home,
+
+        //Battle
         BattleSelect,
         Battle,
+        BattleResult,
+
+        //Gacha
         GachaSelect,
         Gacha,
+        GachaResult,
+
+        //Other
         Other,
         Setting,
     }

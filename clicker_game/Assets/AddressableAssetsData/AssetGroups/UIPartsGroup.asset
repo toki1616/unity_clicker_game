@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Address: BattleSelectButtonUI
     m_ReadOnly: 0
     m_SerializedLabels:
-    - ui
+    - ui_parts
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1d0f50d26a533ec4bae11056d0925499, type: 2}

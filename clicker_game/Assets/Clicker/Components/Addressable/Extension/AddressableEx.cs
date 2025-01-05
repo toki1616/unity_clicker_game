@@ -31,17 +31,25 @@ namespace My.ClickerGame.Ex
                 case AddressableUIType.Home:
                     return AddressableConst.homeUI;
 
+                //Battle
                 case AddressableUIType.BattleSelect:
                     return AddressableConst.battleSelectUI;
 
                 case AddressableUIType.Battle:
                     return AddressableConst.battleUI;
 
+                case AddressableUIType.BattleResult:
+                    return AddressableConst.battleResultUI;
+
+                //Gacha
                 case AddressableUIType.GachaSelect:
                     return AddressableConst.gachaSelectUI;
 
                 case AddressableUIType.Gacha:
                     return AddressableConst.gachaUI;
+
+                case AddressableUIType.GachaResult:
+                    return AddressableConst.gachaResultUI;
 
                 case AddressableUIType.Other:
                     return AddressableConst.otherUI;
@@ -65,6 +73,9 @@ namespace My.ClickerGame.Ex
                     return ScreenSize.SafeArea;
 
                 case AddressableUIType.Battle:
+                    return ScreenSize.Full;
+
+                case AddressableUIType.BattleResult:
                     return ScreenSize.Full;
 
                 case AddressableUIType.GachaSelect:

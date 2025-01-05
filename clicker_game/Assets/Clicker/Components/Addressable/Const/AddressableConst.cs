@@ -14,13 +14,22 @@
         private static string setting = "Setting";
 
         private static string select = "Select";
+        private static string result = "Result";
 
         //UI
         public static string homeUI = $"{home}UI";
-        public static string battleSelectUI = $"{battle}SelectUI";
+
+        //Battle
+        public static string battleSelectUI = $"{battle}{select}UI";
         public static string battleUI = $"{battle}UI";
-        public static string gachaSelectUI = $"{gacha}SelectUI";
+        public static string battleResultUI = $"{battle}{result}UI";
+
+        //Gacha
+        public static string gachaSelectUI = $"{gacha}{select}UI";
         public static string gachaUI = $"{gacha}UI";
+        public static string gachaResultUI = $"{gacha}{result}UI";
+
+
         public static string otherUI = $"{other}UI";
         public static string settingUI = $"{setting}UI";
 

@@ -127,5 +127,10 @@ namespace My.ClickerGame
                     break;
             }
         }
+
+        public void OnTapBattleResultPanel()
+        {
+            _moveScreenBattleSelect.OnNext(Unit.Default);
+        }
     }
 }

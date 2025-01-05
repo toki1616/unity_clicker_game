@@ -75,6 +75,11 @@ namespace My.ClickerGame
             _battleModel.OnTapBattlePanel();
         }
 
+        public void OnTapBattleResultPanel()
+        {
+            _battleModel.OnTapBattleResultPanel();
+        }
+
         public void MoveScreenSuccess()
         {
             Debug.Log("MoveScreenSuccess");

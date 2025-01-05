@@ -32,7 +32,7 @@ namespace My.ClickerGame
 
         public void MoveScreenSuccess()
         {
-            _screenModel.MoveScreen(AddressableUIType.BattleSelect);
+            _screenModel.MoveScreen(AddressableUIType.BattleResult);
         }
 
         public void MoveScreenBattleSelect()
