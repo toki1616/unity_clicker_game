@@ -21,6 +21,14 @@ namespace My.ClickerGame
             Debug.Log("BattlePresenter : Inject");
             _battleModel = battleModel;
             _battleService = battleService;
+
+            AddListener();
+        }
+
+        private void AddListener()
+        {
+            _battleModel.MoveScreenSuccessAsObservable.Subscribe(_ => MoveScreenSuccess());
+            _battleModel.MoveScreenBattleSelectAsObservable.Subscribe(_ => MoveScreenBattleSelect());
         }
 
         //Battle
@@ -65,6 +73,18 @@ namespace My.ClickerGame
         public void OnTapBattlePanel()
         {
             _battleModel.OnTapBattlePanel();
+        }
+
+        public void MoveScreenSuccess()
+        {
+            Debug.Log("MoveScreenSuccess");
+            _battleService.MoveScreenSuccess();
+        }
+
+        public void MoveScreenBattleSelect()
+        {
+            Debug.Log("MoveScreenBattleSelect");
+            _battleService.MoveScreenBattleSelect();
         }
     }
 }

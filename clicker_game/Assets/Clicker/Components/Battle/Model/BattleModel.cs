@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using R3;
 
+using My.ClickerGame.MyEnum;
+
 namespace My.ClickerGame
 {
     public class BattleModel
@@ -14,15 +16,15 @@ namespace My.ClickerGame
         public ReadOnlyReactiveProperty<float> RemainingTime => _remainingTime;
         private ReactiveProperty<float> _remainingTime = new ReactiveProperty<float>(baseTimeLimit);
 
-        public ReadOnlyReactiveProperty<bool> IsGamePlaying => _isGamePlaying;
-        private ReactiveProperty<bool> _isGamePlaying = new ReactiveProperty<bool>(false);
+        private BattlePhase _battlePhase = BattlePhase.Start;
 
         public Observable<bool> IsGameEndSuccessObservable => _isGameEndSuccessSubject;
         private Subject<bool> _isGameEndSuccessSubject = new Subject<bool>();
+        private bool _isGameEndSuccess = false;
 
         public void StartGame()
         {
-            _isGamePlaying.Value = true;
+            _battlePhase = BattlePhase.Battle;
             _remainingTime.Value = baseTimeLimit;
 
             StartCountdown();
@@ -31,11 +33,11 @@ namespace My.ClickerGame
         private void StartCountdown()
         {
             Observable.Interval(TimeSpan.FromSeconds(1))
-                .TakeUntil(_isGamePlaying.Where(x => !x))
+                .TakeWhile(_ => _battlePhase == BattlePhase.Battle)
                 .Subscribe(_ =>
                 {
                     _remainingTime.Value--;
-
+                    
                     if (_remainingTime.Value <= 0)
                     {
                         EndGame();
@@ -45,7 +47,7 @@ namespace My.ClickerGame
 
         private void EndGame()
         {
-            _isGamePlaying.Value = false;
+            _battlePhase = BattlePhase.End;
 
             if (_selectEnemy.Value.HitPoint <= 0)
             {
@@ -58,14 +60,34 @@ namespace My.ClickerGame
 
         private void Success()
         {
-            Debug.Log("Success");
             _isGameEndSuccessSubject.OnNext(true);
+            _isGameEndSuccess = true;
         }
 
         private void Failure()
         {
-            Debug.Log("Failure");
             _isGameEndSuccessSubject.OnNext(false);
+            _isGameEndSuccess = false;
+        }
+
+        public Observable<Unit> MoveScreenSuccessAsObservable => _moveScreenSuccess;
+        private Subject<Unit> _moveScreenSuccess = new Subject<Unit>();
+
+        public Observable<Unit> MoveScreenBattleSelectAsObservable => _moveScreenBattleSelect;
+        private Subject<Unit> _moveScreenBattleSelect = new Subject<Unit>();
+
+        private void EndTap()
+        {
+            if (_isGameEndSuccess)
+            {
+                //success
+                _moveScreenSuccess.OnNext(Unit.Default);
+            }
+            else
+            {
+                //failure
+                _moveScreenBattleSelect.OnNext(Unit.Default);
+            }
         }
 
         //Enemy
@@ -83,21 +105,26 @@ namespace My.ClickerGame
 
         public void OnTapBattlePanel()
         {
-            Debug.Log("OnTapBattlePanel");
-
-            if (!_isGamePlaying.Value)
+            switch (_battlePhase)
             {
-                StartGame();
-                return;
-            }
+                case BattlePhase.Start:
+                    StartGame();
+                    break;
 
-            Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
-            enemy.HitPointMinus(10);
-            _selectEnemy.Value = enemy;
+                case BattlePhase.Battle:
+                    Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
+                    enemy.HitPointMinus(10);
+                    _selectEnemy.Value = enemy;
 
-            if (_selectEnemy.Value.HitPoint <= 0)
-            {
-                EndGame();
+                    if (_selectEnemy.Value.HitPoint <= 0)
+                    {
+                        EndGame();
+                    }
+                    break;
+
+                case BattlePhase.End:
+                    EndTap();
+                    break;
             }
         }
     }
