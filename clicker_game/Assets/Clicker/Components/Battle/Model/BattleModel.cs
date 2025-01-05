@@ -22,6 +22,12 @@ namespace My.ClickerGame
         private Subject<bool> _isGameEndSuccessSubject = new Subject<bool>();
         private bool _isGameEndSuccess = false;
 
+        private void InitializeGame()
+        {
+            _battlePhase = BattlePhase.Start;
+            _remainingTime.Value = baseTimeLimit;
+        }
+
         public void StartGame()
         {
             _battlePhase = BattlePhase.Battle;
@@ -88,6 +94,8 @@ namespace My.ClickerGame
                 //failure
                 _moveScreenBattleSelect.OnNext(Unit.Default);
             }
+
+            InitializeGame();
         }
 
         //Enemy
