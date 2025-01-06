@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using R3;
 using ObservableCollections;
+using Cysharp.Threading.Tasks;
 
 namespace My.ClickerGame
 {
@@ -13,12 +14,23 @@ namespace My.ClickerGame
         public ItemModel()
         {
             Initialize();
+            ExecuteEverySecond().Forget();
         }
 
         private void Initialize()
         {
             InitializeUpgradeComponents();
             InitializeUpgradeableItems();
+        }
+
+        private async UniTaskVoid ExecuteEverySecond()
+        {
+            while (true)
+            {
+                // 1秒待つ
+                await UniTask.Delay(1000);
+                AddSecondUpgradeComponents();
+            }
         }
 
         //UpgradeComponent
@@ -38,15 +50,31 @@ namespace My.ClickerGame
             return itemToUpdate;
         }
 
-        public void AddUpgradeComponent(UpgradeComponentType upgradeComponentType)
+        public void AddUpgradeComponent(UpgradeComponentType upgradeComponentType, int addCount = 1)
         {
             var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType); if (itemToUpdate != null)
             {
-                itemToUpdate.AddCount(1);
+                itemToUpdate.AddCount(addCount);
                 var index = _upgradeComponents.IndexOf(itemToUpdate);
 
                 _upgradeComponents[index] = itemToUpdate;
             }
+        }
+
+        private void AddSecondUpgradeComponents()
+        {
+            //Debug.Log("AddSecondUpgradeComponents");
+            UpgradeableItem supportItem = GetUpgradeableItemValue(UpgradeableItemType.Support);
+
+            int baseAddCount = 10;
+            int addCount = baseAddCount * supportItem.Level;
+
+            if (addCount <= 0)
+            {
+                return;
+            }
+
+            AddUpgradeComponent(UpgradeComponentType.Money, addCount);
         }
 
         //UpgradeableItem
@@ -60,19 +88,19 @@ namespace My.ClickerGame
                 switch (value)
                 {
                     case UpgradeableItemType.Shot:
-                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetLevel(0);
                         upgradeanleItem.SetNextLevel(10);
                         upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
 
                     case UpgradeableItemType.FighterJetCount:
-                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetLevel(0);
                         upgradeanleItem.SetNextLevel(100);
                         upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
 
                     case UpgradeableItemType.Support:
-                        upgradeanleItem.SetLevel(1);
+                        upgradeanleItem.SetLevel(0);
                         upgradeanleItem.SetNextLevel(1000);
                         upgradeanleItem.SetUpgradeComponentType(UpgradeComponentType.Money);
                         break;
