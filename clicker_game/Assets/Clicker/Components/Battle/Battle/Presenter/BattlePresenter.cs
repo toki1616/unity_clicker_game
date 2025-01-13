@@ -72,7 +72,7 @@ namespace My.ClickerGame
 
         public void OnTapBattlePanel()
         {
-            _battleModel.OnTapBattlePanel();
+            _battleModel.OnTapBattlePanel(_battleService.GetBattleTapDamage());
         }
 
         public void OnTapBattleResultPanel()

@@ -111,7 +111,7 @@ namespace My.ClickerGame
             _selectEnemy.Value = enemy;
         }
 
-        public void OnTapBattlePanel()
+        public void OnTapBattlePanel(int battleDamage)
         {
             switch (_battlePhase)
             {
@@ -121,7 +121,7 @@ namespace My.ClickerGame
 
                 case BattlePhase.Battle:
                     Enemy enemy = new Enemy(_selectEnemy.Value.ID, _selectEnemy.Value.Name, _selectEnemy.Value.HitPoint, _selectEnemy.Value.DropItems);
-                    enemy.HitPointMinus(10);
+                    enemy.HitPointMinus(battleDamage);
                     _selectEnemy.Value = enemy;
 
                     if (_selectEnemy.Value.HitPoint <= 0)
