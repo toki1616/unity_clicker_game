@@ -27,7 +27,7 @@ namespace My.ClickerGame
 
         public void OnTapHome()
         {
-            _itemModel.AddUpgradeComponent(UpgradeComponentType.Money);
+            _itemModel.OnTapHome();
         }
 
         public UpgradeComponent GetUpgradeComponentValue(UpgradeComponentType upgradeComponentType)

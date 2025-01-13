@@ -7,6 +7,8 @@ using R3;
 using ObservableCollections;
 using Cysharp.Threading.Tasks;
 
+using My.ClickerGame.Const;
+
 namespace My.ClickerGame
 {
     public class ItemModel
@@ -66,8 +68,7 @@ namespace My.ClickerGame
             //Debug.Log("AddSecondUpgradeComponents");
             UpgradeableItem supportItem = GetUpgradeableItemValue(UpgradeableItemType.Support);
 
-            int baseAddCount = 10;
-            int addCount = baseAddCount * supportItem.Level;
+            int addCount = ItemConst.baseSecoundAddMoney * supportItem.Level;
 
             if (addCount <= 0)
             {
@@ -131,6 +132,15 @@ namespace My.ClickerGame
                     _upgradeableItems[_upgradeableItems.IndexOf(upgradeableItem)] = upgradeableItem;
                 }
             }
+        }
+
+        public void OnTapHome()
+        {
+            UpgradeableItem shotItem = GetUpgradeableItemValue(UpgradeableItemType.Shot);
+            UpgradeableItem JetItem = GetUpgradeableItemValue(UpgradeableItemType.FighterJetCount);
+
+            var addCount = (ItemConst.baseTapAddMoneyShot * shotItem.Level) + (ItemConst.baseTapAddMoneyJet * JetItem.Level);
+            AddUpgradeComponent(UpgradeComponentType.Money, addCount);
         }
     }
 }
