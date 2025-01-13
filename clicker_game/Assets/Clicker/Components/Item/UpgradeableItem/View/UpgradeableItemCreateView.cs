@@ -1,29 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
-using Zenject;
-using R3;
-using R3.Triggers;
-using ObservableCollections;
 
 namespace My.ClickerGame
 {
     public class UpgradeableItemCreateView : MonoBehaviour
     {
-        private ItemPresenter _itemPresenter;
-
-        [Inject]
-        public void Construct
-            (
-                ItemPresenter itemPresenter
-            )
-        {
-            Debug.Log("UpgradeableItemCreateView : Inject");
-            _itemPresenter = itemPresenter;
-        }
-
         [SerializeField]
         private GameObject _spawnPrefab;
 

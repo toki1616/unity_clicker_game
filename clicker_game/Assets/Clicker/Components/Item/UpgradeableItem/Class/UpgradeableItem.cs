@@ -17,7 +17,18 @@ namespace My.ClickerGame
         public UpgradeComponentType UpgradeComponentType { get; private set; }
         public int Level { get; private set; }
 
-        public int NextLevel { get { return nextLevel * Level; } }
+        public int NextLevel { 
+            get {
+                switch (UpgradeableItemType)
+                {
+                    case UpgradeableItemType.Shot:
+                        return nextLevel * Level;
+
+                    default:
+                        return nextLevel * (1 + Level);
+                } 
+            }
+        }
         private int nextLevel;
 
         public UpgradeableItem(UpgradeableItemType upgradeableItemType)

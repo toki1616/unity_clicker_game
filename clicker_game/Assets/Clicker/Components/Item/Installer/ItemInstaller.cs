@@ -12,7 +12,6 @@ namespace My.ClickerGame
             //Presenter
             Container.Bind<ItemPresenter>().AsSingle();
 
-
             //Model
             Container.Bind<ItemModel>().AsSingle();
         }
