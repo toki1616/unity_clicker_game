@@ -51,7 +51,7 @@ namespace My.ClickerGame
                 foreach(var enemy in enemyList)
                 {
                     GameObject view = Instantiate(obj, _parentObject.transform);
-                    view.GetComponent<BattleSelectButtonView>().SetEnemyID(enemy.ID);
+                    view.GetComponent<BattleSelectButtonView>().SetEnemy(enemy);
                 }
             },
             error =>

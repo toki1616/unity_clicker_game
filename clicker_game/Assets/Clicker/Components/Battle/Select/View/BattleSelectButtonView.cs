@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Zenject;
 using R3;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
@@ -27,6 +28,9 @@ namespace My.ClickerGame
 
         [SerializeField]
         private Button _button;
+
+        [SerializeField]
+        private TextMeshProUGUI _nameTMpro;
 
         private int _enemyID = 0;
 
@@ -54,9 +58,10 @@ namespace My.ClickerGame
             _screenPresenter.MoveScreen(AddressableUIType.Battle);
         }
 
-        public void SetEnemyID(int enemyID)
+        public void SetEnemy(Enemy enemy)
         {
-            _enemyID = enemyID;
+            _enemyID = enemy.ID;
+            _nameTMpro.text = enemy.Name;
         }
     }
 }
