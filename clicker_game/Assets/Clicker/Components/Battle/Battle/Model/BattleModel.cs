@@ -106,6 +106,12 @@ namespace My.ClickerGame
             _selectEnemy.ForceNotify();
         }
 
+        public EnemyDropItem[] GetEnemyDrop()
+        {
+            var dropItems = _selectEnemy.Value.DropItem();
+            return dropItems;
+        }
+
         public void BattleSelect(Enemy enemy)
         {
             _selectEnemy.Value = enemy;

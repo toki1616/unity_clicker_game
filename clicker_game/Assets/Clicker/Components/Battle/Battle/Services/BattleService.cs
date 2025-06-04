@@ -50,5 +50,10 @@ namespace My.ClickerGame
 
             return BattleConst.baseTapDamageShot * shotItem.Level;
         }
+
+        public void AddBattleDropItem(EnemyDropItem[] dropItems)
+        {
+            
+        }
     }
 }

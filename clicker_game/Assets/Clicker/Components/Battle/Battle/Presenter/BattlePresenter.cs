@@ -83,6 +83,7 @@ namespace My.ClickerGame
         public void MoveScreenSuccess()
         {
             Debug.Log("MoveScreenSuccess");
+            AddDropItems();
             _battleService.MoveScreenSuccess();
         }
 
@@ -90,6 +91,13 @@ namespace My.ClickerGame
         {
             Debug.Log("MoveScreenBattleSelect");
             _battleService.MoveScreenBattleSelect();
+        }
+
+        private EnemyDropItem[] _dropItems;
+        public void AddDropItems()
+        {
+            _dropItems = _battleModel.GetEnemyDrop();
+            _battleService.AddBattleDropItem(_dropItems);
         }
     }
 }
