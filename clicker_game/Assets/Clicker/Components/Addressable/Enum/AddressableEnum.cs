@@ -34,5 +34,6 @@ namespace My.ClickerGame.MyEnum
     {
         BattleSelectButton,
         GachaSelectButton,
+        UpgradeableItemUI,
     }
 }
