@@ -1,12 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using My.ClickerGame.Util;
+using My.ClickerGame.Ex;
+using My.ClickerGame.MyEnum;
 
 namespace My.ClickerGame
 {
     public class UpgradeableItemCreateView : MonoBehaviour
-    {
-        [SerializeField]
-        private GameObject _spawnPrefab;
+    {        
+        private AddressableManager _addressableManager;
 
         // Start is called before the first frame update
         void Start()
@@ -16,16 +18,28 @@ namespace My.ClickerGame
 
         private void Initialize()
         {
-            CreateUpgradeableItemView();
+            _addressableManager = new AddressableManager(AddressableGroupEnum.UIParts.GetAddressableGroup());
+            CreateUpgradeableItemViewAdressable();
         }
-
-        private void CreateUpgradeableItemView()
+        
+        private async void CreateUpgradeableItemViewAdressable()
         {
-            foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
+            await _addressableManager.LoadAssetAsync<GameObject>(AddressableUIPartsEnum.UpgradeableItemUI.GetAddressableName(), obj =>
             {
-                GameObject spawnObject = Instantiate(_spawnPrefab, this.transform);
-                spawnObject.GetComponent<UpgradeableItemView>().SetUpgradeableItemType(value);
-            }
+                // ロード成功時の処理
+                Debug.Log($"Scene {obj} loaded successfully.");
+
+                foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
+                {
+                    GameObject spawnObject = Instantiate(obj, this.transform);
+                    spawnObject.GetComponent<UpgradeableItemView>().SetUpgradeableItemType(value);
+                }
+            },
+            error =>
+            {
+                // ロード失敗時の処理
+                Debug.LogError($"Error loading scene: {error.Message}");
+            });
         }
     }
 }
