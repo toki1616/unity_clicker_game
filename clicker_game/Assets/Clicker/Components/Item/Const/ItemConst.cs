@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace My.ClickerGame.Const
+﻿namespace My.ClickerGame.Const
 {
     public class ItemConst
     {
