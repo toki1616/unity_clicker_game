@@ -13,18 +13,16 @@ MonoBehaviour:
   m_Name: UIGroup
   m_EditorClassIdentifier: 
   m_GroupName: UIGroup
-  m_Data:
-    m_SerializedData: []
   m_GUID: 8791a73bc2e036745ab7b83260548d39
   m_SerializeEntries:
-  - m_GUID: 0ddc2c8d04e37a9489a2d1553f761cb4
-    m_Address: BattleSelectUI
+  - m_GUID: 09b36a6c700e2284fbd0da9eef131d97
+    m_Address: BattleResultUI
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ca636b4ce3445f041b1cfc221aa1d4c4
-    m_Address: GachaSelectUI
+  - m_GUID: 0ddc2c8d04e37a9489a2d1553f761cb4
+    m_Address: BattleSelectUI
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
@@ -41,8 +39,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - ui
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 09b36a6c700e2284fbd0da9eef131d97
-    m_Address: BattleResultUI
+  - m_GUID: 9a6d91ca3b7534470b6b80e6f62e1064
+    m_Address: Assets/Clicker/Font/NotoSansJP-Medium SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca636b4ce3445f041b1cfc221aa1d4c4
+    m_Address: GachaSelectUI
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui
@@ -51,5 +54,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 1d0f50d26a533ec4bae11056d0925499, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 446f274e59fd91741950cf688b4eed0a, type: 2}
     - {fileID: 11400000, guid: 144de9ca3cf6e2a4595f41fd66687848, type: 2}
+    - {fileID: 11400000, guid: 446f274e59fd91741950cf688b4eed0a, type: 2}

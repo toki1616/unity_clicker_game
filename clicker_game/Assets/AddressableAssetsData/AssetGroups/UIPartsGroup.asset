@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: UIPartsGroup
   m_EditorClassIdentifier: 
   m_GroupName: UIPartsGroup
-  m_Data:
-    m_SerializedData: []
   m_GUID: d3af17c5b558c074eb3a4aab142a9c56
   m_SerializeEntries:
   - m_GUID: 60cca07f3eaadb04e9448ea035c3aece
     m_Address: BattleSelectButtonUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui_parts
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfc64f08e0ad2214ba16036af7c05670
+    m_Address: UpgradeableItemUI
     m_ReadOnly: 0
     m_SerializedLabels:
     - ui_parts
