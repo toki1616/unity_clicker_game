@@ -39,6 +39,7 @@ namespace My.ClickerGame
             {
                 // ロード失敗時の処理
                 Debug.LogError($"Error loading scene: {error.Message}");
+                CreateUpgradeableItemViewAdressable();
             });
         }
     }
