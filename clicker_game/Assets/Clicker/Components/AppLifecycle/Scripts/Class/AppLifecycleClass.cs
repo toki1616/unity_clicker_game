@@ -1,0 +1,18 @@
+using System;
+using My.Utils;
+
+[Serializable]
+public class AppExitData
+{
+    public string lastExitTime;
+    
+    public AppExitData()
+    {
+        lastExitTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    }
+    
+    public TimeSpan GetBackgroundTime()
+    {
+        return BackgroundTimeCalculator.CalculateBackgroundTime(lastExitTime);
+    }
+}
