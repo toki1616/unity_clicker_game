@@ -53,7 +53,10 @@ namespace My.ClickerGame
 
         public void AddBattleDropItem(EnemyDropItem[] dropItems)
         {
-            
+            foreach (var dropItem in dropItems)
+            {
+                _itemModel.AddUpgradeComponent(dropItem.DropItemType, dropItem.DropCount);
+            }
         }
     }
 }
