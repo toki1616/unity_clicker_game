@@ -15,7 +15,7 @@ namespace My.ClickerGame
             ItemModel itemModel
             )
         {
-            Debug.Log("ItemPresenter : Inject");
+            //Debug.Log("ItemPresenter : Inject");
             _itemModel = itemModel;
         }
 

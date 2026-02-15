@@ -15,7 +15,7 @@ namespace My.ClickerGame
             ScreenModel screenModel
             )
         {
-            Debug.Log("ScreenPresenter : Inject");
+            //Debug.Log("ScreenPresenter : Inject");
             _screenModel = screenModel;
         }
 

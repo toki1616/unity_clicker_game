@@ -22,7 +22,7 @@ namespace My.ClickerGame
                 ItemPresenter itemPresenter
             )
         {
-            Debug.Log("UpgradeableItemView : Inject");
+            //Debug.Log("UpgradeableItemView : Inject");
             _itemPresenter = itemPresenter;
         }
 

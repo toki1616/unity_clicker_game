@@ -17,7 +17,7 @@ namespace My.ClickerGame
                 BattlePresenter battlePresenter
             )
         {
-            Debug.Log("BattleEndView : Inject");
+            //Debug.Log("BattleEndView : Inject");
             _battlePresenter = battlePresenter;
         }
 

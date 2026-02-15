@@ -18,7 +18,7 @@ namespace My.ClickerGame
             BattleService battleService
             )
         {
-            Debug.Log("BattlePresenter : Inject");
+            //Debug.Log("BattlePresenter : Inject");
             _battleModel = battleModel;
             _battleService = battleService;
 

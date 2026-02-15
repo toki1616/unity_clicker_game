@@ -23,7 +23,7 @@ namespace My.ClickerGame
                 ScreenPresenter screenPresenter
             )
         {
-            Debug.Log("ScreenView : Inject");
+            //Debug.Log("ScreenView : Inject");
             _screenPresenter = screenPresenter;
         }
 

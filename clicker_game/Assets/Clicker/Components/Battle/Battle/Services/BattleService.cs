@@ -22,7 +22,7 @@ namespace My.ClickerGame
             ItemModel itemModel
             )
         {
-            Debug.Log("BattleService : Inject");
+            //Debug.Log("BattleService : Inject");
             _enemyModel = enemyModel;
             _battleModel = battleModel;
             _screenModel = screenModel;
