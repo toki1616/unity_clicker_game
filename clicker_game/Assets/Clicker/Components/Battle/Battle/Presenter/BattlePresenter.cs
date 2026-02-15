@@ -82,14 +82,12 @@ namespace My.ClickerGame
 
         public void MoveScreenSuccess()
         {
-            Debug.Log("MoveScreenSuccess");
             AddDropItems();
             _battleService.MoveScreenSuccess();
         }
 
         public void MoveScreenBattleSelect()
         {
-            Debug.Log("MoveScreenBattleSelect");
             _battleService.MoveScreenBattleSelect();
         }
 
