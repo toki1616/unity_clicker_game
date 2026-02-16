@@ -15,7 +15,7 @@ namespace My.ClickerGame
             EnemyModel enemyModel
             )
         {
-            Debug.Log("EnemyPresenter : Inject");
+            //Debug.Log("EnemyPresenter : Inject");
             _enemyModel = enemyModel;
         }
 

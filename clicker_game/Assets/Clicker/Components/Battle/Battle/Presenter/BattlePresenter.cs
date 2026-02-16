@@ -18,7 +18,7 @@ namespace My.ClickerGame
             BattleService battleService
             )
         {
-            Debug.Log("BattlePresenter : Inject");
+            //Debug.Log("BattlePresenter : Inject");
             _battleModel = battleModel;
             _battleService = battleService;
 
@@ -82,14 +82,12 @@ namespace My.ClickerGame
 
         public void MoveScreenSuccess()
         {
-            Debug.Log("MoveScreenSuccess");
             AddDropItems();
             _battleService.MoveScreenSuccess();
         }
 
         public void MoveScreenBattleSelect()
         {
-            Debug.Log("MoveScreenBattleSelect");
             _battleService.MoveScreenBattleSelect();
         }
 

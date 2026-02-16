@@ -24,7 +24,7 @@ namespace My.ClickerGame
                 ScreenPresenter screenPresenter
             )
         {
-            Debug.Log("FooterMenuButtonView : Inject");
+            //Debug.Log("FooterMenuButtonView : Inject");
             _screenPresenter = screenPresenter;
         }
 

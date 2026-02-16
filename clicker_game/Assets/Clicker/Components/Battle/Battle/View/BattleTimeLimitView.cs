@@ -20,7 +20,7 @@ namespace My.ClickerGame
                 BattlePresenter battlePresenter
             )
         {
-            Debug.Log("BattleTimeLimitView : Inject");
+            //Debug.Log("BattleTimeLimitView : Inject");
             _battlePresenter = battlePresenter;
         }
 

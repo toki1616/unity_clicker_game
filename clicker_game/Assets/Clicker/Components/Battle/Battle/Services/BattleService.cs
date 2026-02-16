@@ -22,7 +22,7 @@ namespace My.ClickerGame
             ItemModel itemModel
             )
         {
-            Debug.Log("BattleService : Inject");
+            //Debug.Log("BattleService : Inject");
             _enemyModel = enemyModel;
             _battleModel = battleModel;
             _screenModel = screenModel;
@@ -53,7 +53,10 @@ namespace My.ClickerGame
 
         public void AddBattleDropItem(EnemyDropItem[] dropItems)
         {
-            
+            foreach (var dropItem in dropItems)
+            {
+                _itemModel.AddUpgradeComponent(dropItem.DropItemType, dropItem.DropCount);
+            }
         }
     }
 }
