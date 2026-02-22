@@ -48,22 +48,21 @@ namespace My.ClickerGame
                 switch (args.Action)
                 {
                     case NotifyCollectionChangedAction.Add:
-                        Debug.Log($"HeaderTextView : Add : [{args.NewStartingIndex}] = {args.NewItem}");
+                        //Debug.Log($"HeaderTextView : Add : [{args.NewStartingIndex}] = {args.NewItem}");
                         ChangeText(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Move:
-                        Debug.Log(
-                            $"HeaderTextView : Move : [{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
+                        //Debug.Log($"HeaderTextView : Move : [{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
                         break;
                     case NotifyCollectionChangedAction.Remove:
-                        Debug.Log($"HeaderTextView : Remove : [{args.OldStartingIndex}] = {args.OldItem}");
+                        //Debug.Log($"HeaderTextView : Remove : [{args.OldStartingIndex}] = {args.OldItem}");
                         break;
                     case NotifyCollectionChangedAction.Replace:
-                        Debug.Log($"HeaderTextView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
+                        //Debug.Log($"HeaderTextView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
                         ChangeText(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Reset:
-                        Debug.Log("HeaderTextView : Reset");
+                        //Debug.Log("HeaderTextView : Reset");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
