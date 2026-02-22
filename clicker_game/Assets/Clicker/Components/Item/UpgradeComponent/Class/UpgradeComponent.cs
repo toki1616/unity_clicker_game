@@ -11,10 +11,11 @@ namespace My.ClickerGame
         Component,
     }
 
+    [Serializable]
     public class UpgradeComponent
     {
-        public UpgradeComponentType UpgradeComponentType { get; private set; }
-        public int Count { get; private set; }
+        public UpgradeComponentType UpgradeComponentType;
+        public int Count;
 
         public UpgradeComponent(UpgradeComponentType upgradeComponentType, int count)
         {

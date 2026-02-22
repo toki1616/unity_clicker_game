@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace My.ClickerGame
@@ -11,49 +10,63 @@ namespace My.ClickerGame
         Support,
     }
 
+    [Serializable]
     public class UpgradeableItem
     {
-        public UpgradeableItemType UpgradeableItemType { get; private set; }
-        public UpgradeComponentType UpgradeComponentType { get; private set; }
-        public int Level { get; private set; }
+        [SerializeField]
+        private UpgradeableItemType upgradeableItemType;
 
-        public int NextLevel { 
-            get {
-                switch (UpgradeableItemType)
+        [SerializeField]
+        private UpgradeComponentType upgradeComponentType;
+
+        [SerializeField]
+        private int level;
+
+        [SerializeField]
+        private int nextLevelBase;
+
+        public UpgradeableItemType UpgradeableItemType => upgradeableItemType;
+        public UpgradeComponentType UpgradeComponentType => upgradeComponentType;
+        public int Level => level;
+
+        public int NextLevel
+        {
+            get
+            {
+                switch (upgradeableItemType)
                 {
                     case UpgradeableItemType.Shot:
-                        return nextLevel * Level;
+                        return nextLevelBase * level;
 
                     default:
-                        return nextLevel * (1 + Level);
-                } 
+                        return nextLevelBase * (1 + level);
+                }
             }
         }
-        private int nextLevel;
 
-        public UpgradeableItem(UpgradeableItemType upgradeableItemType)
+        public UpgradeableItem(UpgradeableItemType type)
         {
-            UpgradeableItemType = upgradeableItemType;
+            upgradeableItemType = type;
         }
 
         public void SetLevel(int value)
         {
-            Level = value;
+            level = value;
         }
 
         public void SetNextLevel(int value)
         {
-            nextLevel = value;
+            nextLevelBase = value;
         }
 
-        public void SetUpgradeComponentType(UpgradeComponentType upgradeComponentType)
+        public void SetUpgradeComponentType(UpgradeComponentType type)
         {
-            UpgradeComponentType = upgradeComponentType;
+            upgradeComponentType = type;
         }
 
         public void LevelUp()
         {
-            Level++;
+            level++;
         }
     }
 }

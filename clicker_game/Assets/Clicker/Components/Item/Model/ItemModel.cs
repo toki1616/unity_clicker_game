@@ -8,6 +8,7 @@ using ObservableCollections;
 using Cysharp.Threading.Tasks;
 
 using My.ClickerGame.Const;
+using My.Save.Json;
 
 namespace My.ClickerGame
 {
@@ -40,9 +41,27 @@ namespace My.ClickerGame
 
         private void InitializeUpgradeComponents()
         {
+            _upgradeComponents.Clear();
+
+            // load
+            var loaded = JsonSaveUtils.Load<List<UpgradeComponent>>(SaveKey.ItemData.ToString());
+
+            if (loaded != null && loaded.Count > 0)
+            {
+                foreach (var item in loaded)
+                {
+                    _upgradeComponents.Add(item);
+                }
+
+                return;
+            }
+
+            // initialize
+            _upgradeComponents.Clear();
+
             foreach (UpgradeComponentType value in Enum.GetValues(typeof(UpgradeComponentType)))
             {
-                _upgradeComponents.Add(new UpgradeComponent(value, 0));
+                _upgradeComponents.Add(new UpgradeComponent(value, 0)); // Add 通知
             }
         }
 
@@ -61,6 +80,8 @@ namespace My.ClickerGame
 
                 _upgradeComponents[index] = itemToUpdate;
             }
+
+            SaveUpgradeComponents();
         }
 
         private void AddSecondUpgradeComponents()
@@ -83,9 +104,28 @@ namespace My.ClickerGame
 
         private void InitializeUpgradeableItems()
         {
+            _upgradeableItems.Clear();
+
+            //load
+            var loaded = JsonSaveUtils.Load<List<UpgradeableItem>>(SaveKey.LevelData.ToString());
+
+            if (loaded != null && loaded.Count > 0)
+            {
+                _upgradeableItems.Clear();
+
+                foreach (var item in loaded)
+                {
+                    _upgradeableItems.Add(item);
+                }
+
+                return;
+            }
+
+            //initialize
             foreach (UpgradeableItemType value in Enum.GetValues(typeof(UpgradeableItemType)))
             {
                 var upgradeanleItem = new UpgradeableItem(value);
+
                 switch (value)
                 {
                     case UpgradeableItemType.Shot:
@@ -130,6 +170,8 @@ namespace My.ClickerGame
 
                     _upgradeComponents[_upgradeComponents.IndexOf(upgradeComponent)] = upgradeComponent;
                     _upgradeableItems[_upgradeableItems.IndexOf(upgradeableItem)] = upgradeableItem;
+
+                    SaveUpgradeableItems();
                 }
             }
         }
@@ -141,6 +183,17 @@ namespace My.ClickerGame
 
             var addCount = (ItemConst.baseTapAddMoneyShot * shotItem.Level) + (ItemConst.baseTapAddMoneyJet * JetItem.Level);
             AddUpgradeComponent(UpgradeComponentType.Money, addCount);
+        }
+
+        private void SaveUpgradeComponents()
+        {
+            JsonSaveUtils.Save(SaveKey.ItemData.ToString(), _upgradeComponents.ToList());
+        }
+
+        private void SaveUpgradeableItems()
+        {
+            SaveUpgradeComponents();
+            JsonSaveUtils.Save(SaveKey.LevelData.ToString(), _upgradeableItems.ToList());
         }
     }
 }
