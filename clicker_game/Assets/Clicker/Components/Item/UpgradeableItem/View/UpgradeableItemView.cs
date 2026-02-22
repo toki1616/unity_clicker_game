@@ -66,21 +66,20 @@ namespace My.ClickerGame
                 switch (args.Action)
                 {
                     case NotifyCollectionChangedAction.Add:
-                        Debug.Log($"HeaderTextView : Add : [{args.NewStartingIndex}] = {args.NewItem}");
+                        //Debug.Log($"UpgradeableItemView : Add : [{args.NewStartingIndex}] = {args.NewItem}");
                         break;
                     case NotifyCollectionChangedAction.Move:
-                        Debug.Log(
-                            $"HeaderTextView : Move : [{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
+                        //Debug.Log($"UpgradeableItemView : Move : [{args.OldStartingIndex}] => [{args.NewStartingIndex}]");
                         break;
                     case NotifyCollectionChangedAction.Remove:
-                        Debug.Log($"HeaderTextView : Remove : [{args.OldStartingIndex}] = {args.OldItem}");
+                        //Debug.Log($"UpgradeableItemView : Remove : [{args.OldStartingIndex}] = {args.OldItem}");
                         break;
                     case NotifyCollectionChangedAction.Replace:
-                        Debug.Log($"HeaderTextView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
+                        //Debug.Log($"UpgradeableItemView : Replace : [{args.OldStartingIndex}] = ({args.OldItem} => {args.NewItem})");
                         ChangeUpgradeableItem(args.NewItem);
                         break;
                     case NotifyCollectionChangedAction.Reset:
-                        Debug.Log("HeaderTextView : Reset");
+                        //Debug.Log("UpgradeableItemView : Reset");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
