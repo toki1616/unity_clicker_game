@@ -103,6 +103,9 @@ namespace My.ClickerGame.Ex
                 case AddressableUIPartsEnum.BattleSelectButton:
                     return AddressableConst.battleSelectButtonUI;
 
+                case AddressableUIPartsEnum.ResultDropItemUI:
+                    return AddressableConst.resultItemDropUI;
+
                 case AddressableUIPartsEnum.GachaSelectButton:
                     return AddressableConst.gachaSelectButtonUI;
                     
