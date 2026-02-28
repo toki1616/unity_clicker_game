@@ -24,14 +24,16 @@ namespace My.ClickerGame
         {
             InitializeUpgradeComponents();
             InitializeUpgradeableItems();
+
+            AddBackgroundBonus();
         }
 
         private async UniTaskVoid ExecuteEverySecond()
         {
             while (true)
             {
-                // 1秒待つ
-                await UniTask.Delay(1000);
+                //autoAddIntervalSeconds秒待つ
+                await UniTask.Delay(ItemConst.autoAddIntervalSeconds * 1000);
                 AddSecondUpgradeComponents();
             }
         }
@@ -69,6 +71,29 @@ namespace My.ClickerGame
         {
             var itemToUpdate = _upgradeComponents.FirstOrDefault(item => item.UpgradeComponentType == upgradeComponentType);
             return itemToUpdate;
+        }
+
+        /// <summary>
+        /// バックグラウンドだった時間分の加算処理
+        /// </summary>
+        private void AddBackgroundBonus()
+        {
+            var data = JsonSaveUtils.Load<AppExitData>(SaveKey.LastExitTime.ToString());
+            if (data == null) return;
+
+            //放置時間の上限
+            int maxSeconds = ItemConst.autoAddIntervalMaxHours * 3600;
+
+            //経過時間を上限で制限
+            int limitedSeconds = Mathf.Min(data.ElapsedSeconds, maxSeconds);
+
+            //実行回数
+            int executeCount = limitedSeconds / ItemConst.autoAddIntervalSeconds;
+
+            for (int i = 0; i < executeCount; i++)
+            {
+                AddSecondUpgradeComponents();
+            }
         }
 
         public void AddUpgradeComponent(UpgradeComponentType upgradeComponentType, int addCount = 1)
