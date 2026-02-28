@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using My.Save.Json;
 
@@ -8,9 +8,7 @@ namespace My.Lifecycle
     {
         public void OnAppStart()
         {
-            var data = Load();
-            Debug.Log($"前回終了時刻 : {data.lastExitTime}");
-            Debug.Log($"経過時間 : {data.GetBackgroundTime()}");
+            
         }
 
         public void OnAppExit()
@@ -26,11 +24,6 @@ namespace My.Lifecycle
         public void Save(AppExitData data)
         {
             JsonSaveUtils.Save(SaveKey.LastExitTime.ToString(), data);
-        }
-
-        public AppExitData Load()
-        {
-            return JsonSaveUtils.Load<AppExitData>(SaveKey.LastExitTime.ToString());
         }
     }
 }

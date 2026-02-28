@@ -7,7 +7,10 @@
         //Tapごとに増やすお金のBaseの値
         public static int baseTapAddMoneyJet = 100;
 
-        //1秒ごとに増やすお金のBaseの値
+        //autoAddIntervalSecondsごとに増やすお金のBaseの値
         public static int baseSecoundAddMoney = 10;
+
+        public static int autoAddIntervalSeconds = 10;
+        public static int autoAddIntervalMaxHours = 10;
     }
 }
