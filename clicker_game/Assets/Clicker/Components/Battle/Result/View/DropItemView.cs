@@ -1,16 +1,32 @@
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
-public class DropItemView : MonoBehaviour
+namespace My.ClickerGame
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class DropItemView : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private TextMeshProUGUI itemName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private TextMeshProUGUI itemCount;
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void SetDropItem(EnemyDropItem dropItem)
+        {
+            itemName.text = $"{dropItem.DropItemType}";
+            itemCount.text = $"{dropItem.DropCount}";
+        }
     }
 }

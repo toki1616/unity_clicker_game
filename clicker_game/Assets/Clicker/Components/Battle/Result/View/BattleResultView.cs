@@ -48,7 +48,7 @@ namespace My.ClickerGame
                 foreach (var dropItem in dropItems)
                 {
                     GameObject view = Instantiate(obj, _parentObj.transform);
-                    //view.GetComponent<DropItemView>().SetEnemy(enemy);
+                    view.GetComponent<DropItemView>().SetDropItem(dropItem);
                 }
             },
             error =>
