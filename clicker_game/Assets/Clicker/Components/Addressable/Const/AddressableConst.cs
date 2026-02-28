@@ -35,6 +35,7 @@
 
         //UI Parts
         public static string battleSelectButtonUI = $"{battle}SelectButtonUI";
+        public static string resultItemDropUI = $"ResultDropItemUI";
         public static string gachaSelectButtonUI = $"{gachaSelectUI}ButtonUI";
         public static string upgradeableItemUI = $"UpgradeableItemUI";
     }

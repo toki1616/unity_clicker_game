@@ -97,5 +97,10 @@ namespace My.ClickerGame
             _dropItems = _battleModel.GetEnemyDrop();
             _battleService.AddBattleDropItem(_dropItems);
         }
+
+        public EnemyDropItem[] GetDropItems()
+        {
+            return _dropItems;
+        }
     }
 }
