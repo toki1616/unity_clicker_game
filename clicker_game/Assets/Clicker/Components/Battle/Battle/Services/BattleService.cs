@@ -46,9 +46,17 @@ namespace My.ClickerGame
 
         public int GetBattleTapDamage()
         {
-            UpgradeableItem shotItem = _itemModel.GetUpgradeableItemValue(UpgradeableItemType.Shot);
+            var shotUpgrade = _itemModel.GetUpgradeableItemValue(UpgradeableItemType.Shot);
+            var fighterJetCountUpgrade = _itemModel.GetUpgradeableItemValue(UpgradeableItemType.FighterJetCount);
+            var supportUpgrade = _itemModel.GetUpgradeableItemValue(UpgradeableItemType.Support);
 
-            return BattleConst.baseTapDamageShot * shotItem.Level;
+            int shotTapDamage = BattleConst.baseTapDamageShot * shotUpgrade.Level;
+            int fighterJetTapDamage = BattleConst.baseTapDamageFighterJetCount * fighterJetCountUpgrade.Level;
+            int supportTapDamage = BattleConst.baseTapDamageSupport * supportUpgrade.Level;
+
+            int totalTapDamage = shotTapDamage + fighterJetTapDamage + supportTapDamage;
+
+            return totalTapDamage;
         }
 
         public void AddBattleDropItem(EnemyDropItem[] dropItems)
