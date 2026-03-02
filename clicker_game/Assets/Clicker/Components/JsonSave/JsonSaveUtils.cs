@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -60,7 +60,7 @@ namespace My.Save.Json
         /// <param name="data"></param>
         public static void Save<T>(string fileName, T data)
         {
-            Debug.Log($"JsonSaveUtils : Save");
+            //Debug.Log($"JsonSaveUtils : Save");
 
             // List の場合は自動で ListWrapper に包む
             if (data is System.Collections.IList)
@@ -90,7 +90,7 @@ namespace My.Save.Json
         /// <returns></returns>
         public static T Load<T>(string fileName) where T : new()
         {
-            Debug.Log($"JsonSaveUtils : Load");
+            //Debug.Log($"JsonSaveUtils : Load");
 
             string path = GetPath(fileName);
 
