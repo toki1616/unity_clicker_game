@@ -35,10 +35,9 @@ namespace My.ClickerGame
                             EnemyDropItemRate[] enemyDropItems = new EnemyDropItemRate[]
                             {
                                 new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 100, dropRate: 100),
-                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 50),
                                 new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 10),
                             };
-                            Enemy enemy = new Enemy(id: 0, name: "test1", hitPoint: 1, enemyDropItems: enemyDropItems);
+                            Enemy enemy = new Enemy(id: 0, name: "test1", hitPoint: 50, enemyDropItems: enemyDropItems);
 
                             enemyList.Add(enemy);
                             break;
@@ -48,7 +47,7 @@ namespace My.ClickerGame
                         {
                             EnemyDropItemRate[] enemyDropItems = new EnemyDropItemRate[]
                             {
-                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 100, dropRate: 90),
+                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 100, dropRate: 100),
                                 new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 10),
                             };
                             Enemy enemy = new Enemy(id: 1, name: "test2", hitPoint: 500, enemyDropItems: enemyDropItems);
@@ -61,7 +60,7 @@ namespace My.ClickerGame
                         {
                             EnemyDropItemRate[] enemyDropItems = new EnemyDropItemRate[]
                             {
-                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 90),
+                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 1000, dropRate: 100),
                                 new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 10000, dropRate: 10),
                             };
                             Enemy enemy = new Enemy(id: 2, name: "test3", hitPoint: 1000, enemyDropItems: enemyDropItems);
@@ -74,7 +73,7 @@ namespace My.ClickerGame
                         {
                             EnemyDropItemRate[] enemyDropItems = new EnemyDropItemRate[]
                             {
-                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 10000, dropRate: 90),
+                                new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 10000, dropRate: 100),
                                 new EnemyDropItemRate(dropItemType: UpgradeComponentType.Money, dropCount: 100000, dropRate: 10),
                             };
                             Enemy enemy = new Enemy(id: 3, name: "test4", hitPoint: 5000, enemyDropItems: enemyDropItems);
