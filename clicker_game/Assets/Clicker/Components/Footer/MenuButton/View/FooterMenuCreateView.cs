@@ -19,6 +19,8 @@ namespace My.ClickerGame
         {
             foreach (FooterMenuType value in Enum.GetValues(typeof(FooterMenuType)))
             {
+                if (!(value == FooterMenuType.Home || value == FooterMenuType.BattleSelect)) return;
+
                 GameObject spawnObject = Instantiate(_spawnPrefab, this.transform);
                 spawnObject.GetComponent<FooterMenuButtonView>().SetFooterMenuType(value);
             }
