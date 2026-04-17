@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ui_parts
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab2aacc5d3c584691b0cccbaca3b1455
+    m_Address: GachaSelectButtonUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ui_parts
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfc64f08e0ad2214ba16036af7c05670
     m_Address: UpgradeableItemUI
     m_ReadOnly: 0

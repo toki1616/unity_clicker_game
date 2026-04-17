@@ -15,16 +15,19 @@ namespace My.ClickerGame
 {
     public class ScreenView : MonoBehaviour
     {
+        private IInstantiator _instantiator;
         private ScreenPresenter _screenPresenter;
 
         [Inject]
         public void Construct
             (
-                ScreenPresenter screenPresenter
+                ScreenPresenter screenPresenter,
+                IInstantiator instantiator
             )
         {
             //Debug.Log("ScreenView : Inject");
             _screenPresenter = screenPresenter;
+            _instantiator = instantiator;
         }
 
         private AddressableManager _addressableManager;
@@ -70,7 +73,17 @@ namespace My.ClickerGame
                         {
                             ChangeParentViewSetActive(true);
                             DeleteNowUI(_fullScreenPanel);
-                            GameObject view = Instantiate(obj, _fullScreenPanel.transform);
+                            
+                            switch(screenType)
+                            {
+                                case AddressableUIType.GachaSelect:
+                                    var buttonView = _instantiator.InstantiatePrefabForComponent<GachaSelectView>(obj, _fullScreenPanel.transform);
+                                    break;
+                                
+                                default:
+                                    GameObject view = Instantiate(obj, _fullScreenPanel.transform);
+                                    break;
+                            }
                             break;
                         }
 
@@ -78,7 +91,17 @@ namespace My.ClickerGame
                         {
                             ChangeParentViewSetActive(false);
                             DeleteNowUI(_safeAreaMainScreenPanel);
-                            GameObject view = Instantiate(obj, _safeAreaMainScreenPanel.transform);
+                            
+                            switch(screenType)
+                            {
+                                case AddressableUIType.GachaSelect:
+                                    var buttonView = _instantiator.InstantiatePrefabForComponent<GachaSelectView>(obj, _safeAreaMainScreenPanel.transform);
+                                    break;
+                                
+                                default:
+                                    GameObject view = Instantiate(obj, _safeAreaMainScreenPanel.transform);
+                                    break;
+                            }
                             break;
                         }
                 }
